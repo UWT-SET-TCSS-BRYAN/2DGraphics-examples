@@ -37,7 +37,7 @@ public class EllipseAndRectanglePanel extends JPanel {
     /** The height for the rectangle. */
     private static final int RECTANGLE_HEIGHT = 50;
 
-//    private final Ellipse2D myShape;
+    private final Ellipse2D myShape;
 
 
     /**
@@ -48,27 +48,27 @@ public class EllipseAndRectanglePanel extends JPanel {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
-//        myShape = new Ellipse2D.Double(0, 150, 100, 100);
-//        addButton();
+        myShape = new Ellipse2D.Double(0, 150, 100, 100);
+        addButton();
     }
 
-//    private void addButton() {
-//        setLayout(new BorderLayout());
-//        final JButton move = new JButton("Move");
-//
-//        move.addActionListener(theEvent -> {
-//            final Rectangle2D bounds = myShape.getBounds2D();
-//            myShape.setFrame(bounds.getX() + 25,
-//                    bounds.getY() + 5,
-//                    bounds.getWidth(),
-//                    bounds.getHeight());
-//
-//            repaint();
-//        });
-//
-//
-//        add(move, BorderLayout.SOUTH);
-//    }
+    private void addButton() {
+        setLayout(new BorderLayout());
+        final JButton move = new JButton("Move");
+
+        move.addActionListener(theEvent -> {
+            final Rectangle2D bounds = myShape.getBounds2D();
+            myShape.setFrame(bounds.getX() + 25,
+                    bounds.getY() + 5,
+                    bounds.getWidth(),
+                    bounds.getHeight());
+
+            repaint();
+        });
+
+
+        add(move, BorderLayout.SOUTH);
+    }
 
     /**
      * Paints some ellipses.
@@ -84,6 +84,10 @@ public class EllipseAndRectanglePanel extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                              RenderingHints.VALUE_ANTIALIAS_ON);
 
+//        System.out.println("Paint me in paintComponent!: W:" + getWidth() + ", H:" + getHeight());
+
+        g2d.setPaint(Color.GREEN);
+        g2d.fill(myShape);
 
 
 //        final Shape ellipse = new Ellipse2D.Double(10, 10, 50, 100);
@@ -94,7 +98,7 @@ public class EllipseAndRectanglePanel extends JPanel {
 //        final Shape rectangle =
 //                        new Rectangle2D.Double((getWidth() - RECTANGLE_WIDTH) / 2,
 //                                               (getHeight() - RECTANGLE_HEIGHT) / 2,
-//                                               RECTANGLE_WIDTH * 2, RECTANGLE_HEIGHT * 2);
+//                                               RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
 //        g2d.setPaint(Color.RED);
 //        g2d.setStroke(new BasicStroke(STROKE_WIDTH));
 //        g2d.setStroke(new BasicStroke(STROKE_WIDTH, BasicStroke.CAP_BUTT,
