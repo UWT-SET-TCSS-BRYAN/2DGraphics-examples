@@ -4,18 +4,11 @@
 
 package view;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  * Demonstrates the painting of ellipses (and rectangles).
@@ -44,6 +37,9 @@ public class EllipseAndRectanglePanel extends JPanel {
     /** The height for the rectangle. */
     private static final int RECTANGLE_HEIGHT = 50;
 
+//    private final Ellipse2D myShape;
+
+
     /**
      * Constructs a new ellipse panel.
      */
@@ -51,7 +47,28 @@ public class EllipseAndRectanglePanel extends JPanel {
         super();
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
+//        myShape = new Ellipse2D.Double(0, 150, 100, 100);
+//        addButton();
     }
+
+//    private void addButton() {
+//        setLayout(new BorderLayout());
+//        final JButton move = new JButton("Move");
+//
+//        move.addActionListener(theEvent -> {
+//            final Rectangle2D bounds = myShape.getBounds2D();
+//            myShape.setFrame(bounds.getX() + 25,
+//                    bounds.getY() + 5,
+//                    bounds.getWidth(),
+//                    bounds.getHeight());
+//
+//            repaint();
+//        });
+//
+//
+//        add(move, BorderLayout.SOUTH);
+//    }
 
     /**
      * Paints some ellipses.
@@ -67,27 +84,22 @@ public class EllipseAndRectanglePanel extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                              RenderingHints.VALUE_ANTIALIAS_ON);
 
-        final Shape ellipse = new Ellipse2D.Double(10, 10, 50, 100);
-        g2d.setPaint(Color.ORANGE);
-        g2d.setStroke(new BasicStroke(STROKE_WIDTH));
-        g2d.draw(ellipse);
 
-        final Shape rectangle =
-                        new Rectangle2D.Double((getWidth() - RECTANGLE_WIDTH) / 2,
-                                               (getHeight() - RECTANGLE_HEIGHT) / 2,
-                                               RECTANGLE_WIDTH * 2, RECTANGLE_HEIGHT * 2);
-        g2d.setPaint(Color.RED);
-        g2d.setStroke(new BasicStroke(STROKE_WIDTH));
+
+//        final Shape ellipse = new Ellipse2D.Double(10, 10, 50, 100);
+//        g2d.setPaint(Color.GREEN);
+//        g2d.setStroke(new BasicStroke(1));
+//        g2d.fill(ellipse);
+//
+//        final Shape rectangle =
+//                        new Rectangle2D.Double((getWidth() - RECTANGLE_WIDTH) / 2,
+//                                               (getHeight() - RECTANGLE_HEIGHT) / 2,
+//                                               RECTANGLE_WIDTH * 2, RECTANGLE_HEIGHT * 2);
+//        g2d.setPaint(Color.RED);
+//        g2d.setStroke(new BasicStroke(STROKE_WIDTH));
 //        g2d.setStroke(new BasicStroke(STROKE_WIDTH, BasicStroke.CAP_BUTT,
 //                                      BasicStroke.JOIN_MITER, 1.5f));
-        g2d.draw(rectangle);
-
-        final Shape ellipse2 = new Ellipse2D.Double(50, 50, 125, 200);
-        
-        g2d.setPaint(Color.BLUE);
-        g2d.fill(ellipse2);
-        g2d.setPaint(Color.YELLOW);
-        g2d.draw(ellipse2);
+//        g2d.draw(rectangle);
 
     }
 
