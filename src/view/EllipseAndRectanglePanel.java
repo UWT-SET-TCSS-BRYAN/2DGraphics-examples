@@ -14,8 +14,7 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  * Demonstrates the painting of ellipses (and rectangles).
@@ -97,6 +96,10 @@ public class EllipseAndRectanglePanel extends JPanel {
      * @param theArgs Command line arguments (ignored).
      */
     public static void main(final String... theArgs) {
+        SwingUtilities.invokeLater(EllipseAndRectanglePanel::createAndShowGui);
+    }
+
+    public static void createAndShowGui() {
         final EllipseAndRectanglePanel panel = new EllipseAndRectanglePanel();
         final JFrame frame = new JFrame("EllipseAndRectanglePanel Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
