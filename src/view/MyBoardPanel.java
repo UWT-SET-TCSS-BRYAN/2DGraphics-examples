@@ -4,14 +4,11 @@
 
 package view;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
-
-import javax.swing.*;
 
 /**
  * Demonstrates the painting of ellipses (and rectangles).
@@ -20,11 +17,11 @@ import javax.swing.*;
  * @author Charles Bryan
  * @version 1.2
  */
-public class EllipseAndRectanglePanel extends JPanel {
-    
+public class MyBoardPanel extends JPanel {
+
     /**  A generated serial version UID for object Serialization. */
-    private static final long serialVersionUID = 8452917670991316606L; 
-    
+    private static final long serialVersionUID = 8452917670991316606L;
+
     /** The width of the panel. */
     private static final int WIDTH = 400;
 
@@ -46,7 +43,7 @@ public class EllipseAndRectanglePanel extends JPanel {
     /**
      * Constructs a new ellipse panel.
      */
-    public EllipseAndRectanglePanel() {
+    public MyBoardPanel() {
         super();
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -118,11 +115,11 @@ public class EllipseAndRectanglePanel extends JPanel {
      * @param theArgs Command line arguments (ignored).
      */
     public static void main(final String... theArgs) {
-        SwingUtilities.invokeLater(EllipseAndRectanglePanel::createAndShowGui);
+        SwingUtilities.invokeLater(MyBoardPanel::createAndShowGui);
     }
 
     public static void createAndShowGui() {
-        final EllipseAndRectanglePanel panel = new EllipseAndRectanglePanel();
+        final MyBoardPanel panel = new MyBoardPanel();
         final JFrame frame = new JFrame("EllipseAndRectanglePanel Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
