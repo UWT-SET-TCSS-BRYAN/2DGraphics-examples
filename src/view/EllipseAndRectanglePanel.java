@@ -113,6 +113,10 @@ public class EllipseAndRectanglePanel extends JPanel {
      * @param theArgs Command line arguments (ignored).
      */
     public static void main(final String... theArgs) {
+        SwingUtilities.invokeLater(EllipseAndRectanglePanel::createAndShowGui);
+    }
+
+    public static void createAndShowGui() {
         final EllipseAndRectanglePanel panel = new EllipseAndRectanglePanel();
         final JFrame frame = new JFrame("EllipseAndRectanglePanel Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
