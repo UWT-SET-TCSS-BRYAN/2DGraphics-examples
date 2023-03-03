@@ -8,4 +8,5 @@ public interface BoardControls {
     void moveRight();
     void moveLeft();
     Point getPieceLocation();
+    Dimension getBoardDimension();
 }

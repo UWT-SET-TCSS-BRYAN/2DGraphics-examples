@@ -6,7 +6,7 @@ import java.beans.PropertyChangeSupport;
 
 public class Board implements BoardControls {
 
-    public final String PIECE_MOVED_PROPERTY = "THIS PRT doesnt matter!!#@!#@#@@#$@#$";
+    public static final String PIECE_MOVED_PROPERTY = "THIS PRT doesnt matter!!#@!#@#@@#$@#$";
 
     private final Dimension myDimension;
 
@@ -15,7 +15,7 @@ public class Board implements BoardControls {
     private final PropertyChangeSupport myPcs;
 
     public Board(final Dimension theDimension) {
-        myDimension = theDimension;
+        myDimension = new Dimension(theDimension);
         myPiece = new Point(0,0);
         myPcs = new PropertyChangeSupport(this);
     }
@@ -42,13 +42,13 @@ public class Board implements BoardControls {
 
     @Override
     public void moveRight() {
-        myPiece.translate(-1, 0);
+        myPiece.translate(1, 0);
         notifyOfChange();
     }
 
     @Override
     public void moveLeft() {
-        myPiece.translate(1, 0);
+        myPiece.translate(-1, 0);
         notifyOfChange();
     }
 
@@ -60,6 +60,12 @@ public class Board implements BoardControls {
     public Point getPieceLocation() {
         return new Point(myPiece);
     }
+
+    @Override
+    public Dimension getBoardDimension(){
+        return new Dimension(myDimension);
+    };
+
 
     public void addPropertyChangeListener(final PropertyChangeListener theListener) {
         myPcs.addPropertyChangeListener(theListener);
