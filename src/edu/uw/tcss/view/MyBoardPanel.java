@@ -7,7 +7,6 @@ package edu.uw.tcss.view;
 
 import edu.uw.tcss.model.Board;
 import edu.uw.tcss.model.BoardControls;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -33,7 +32,7 @@ import javax.swing.JPanel;
  * @author Charles Bryan
  * @version 1.2
  */
-public class MyBoardPanel extends JPanel implements PropertyChangeListener {
+public final class MyBoardPanel extends JPanel implements PropertyChangeListener {
 
     /**  A generated serial version UID for object Serialization. */
     @Serial
@@ -61,8 +60,8 @@ public class MyBoardPanel extends JPanel implements PropertyChangeListener {
 
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(
-                myBoard.getBoardDimensions().width * RECTANGLE_WIDTH,
-                myBoard.getBoardDimensions().height * RECTANGLE_HEIGHT));
+                myBoard.getBoardWidth() * RECTANGLE_WIDTH,
+                myBoard.getBoardHeight() * RECTANGLE_HEIGHT));
 
         final Point loc = myBoard.getPieceLocation();
 
@@ -95,8 +94,8 @@ public class MyBoardPanel extends JPanel implements PropertyChangeListener {
                              RenderingHints.VALUE_ANTIALIAS_ON);
 
         g2d.setPaint(Color.BLACK);
-        for (int row = 0; row < myBoard.getBoardDimensions().height; row++) {
-            for (int col = 0; col < myBoard.getBoardDimensions().width; col++) {
+        for (int row = 0; row < myBoard.getBoardHeight(); row++) {
+            for (int col = 0; col < myBoard.getBoardWidth(); col++) {
                 g2d.draw(new Rectangle2D.Double(col * RECTANGLE_WIDTH, row * RECTANGLE_HEIGHT,
                         RECTANGLE_WIDTH, RECTANGLE_HEIGHT));
             }
@@ -145,16 +144,12 @@ public class MyBoardPanel extends JPanel implements PropertyChangeListener {
         public void keyPressed(final KeyEvent theEvent) {
             if (theEvent.getKeyCode() == KeyEvent.VK_W) {
                 myBoard.moveUp();
-                System.out.println("up");
             } else if (theEvent.getKeyCode() == KeyEvent.VK_S) {
                 myBoard.moveDown();
-                System.out.println("down");
             } else if (theEvent.getKeyCode() == KeyEvent.VK_A) {
                 myBoard.moveLeft();
-                System.out.println("left");
             } else if (theEvent.getKeyCode() == KeyEvent.VK_D) {
                 myBoard.moveRight();
-                System.out.println("right");
             }
 
         }

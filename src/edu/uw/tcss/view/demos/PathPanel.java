@@ -26,7 +26,7 @@ import javax.swing.JPanel;
  * @author Charles Bryan
  * @version 1.2
  */
-public class PathPanel extends JPanel {
+public final class PathPanel extends JPanel {
 
     /**
      * The panel width.

@@ -26,7 +26,7 @@ import javax.swing.SwingUtilities;
  * @author Charles Bryan
  * @version 1.2
  */
-public class EllipseAndRectanglePanel extends JPanel {
+public final class EllipseAndRectanglePanel extends JPanel {
     
     /**  A generated serial version UID for object Serialization. */
     @Serial

@@ -1,18 +1,20 @@
 package edu.uw.tcss.model;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class Board implements BoardControls {
 
-    public static final String PROPERTY_PIECE_LOCATION = "Now the string value doesnt reallu mattear ata all!!!*RE*W(REW*kR()";
+    /** The manager of this object's PropertyChangeListeners. */
+    private final PropertyChangeSupport myPcs;
 
-    private PropertyChangeSupport myPcs;
+    /** The abstract size of this board. Not, not in pixels. */
+    private final Dimension myBoardDimension;
 
-    private Dimension myBoardDimension;
-
-    private Point myPieceLocation;
+    /** The abstract location of the piece on the board. Note, not in pixels. */
+    private final Point myPieceLocation;
 
     public Board() {
         this(0, 0);
@@ -23,15 +25,20 @@ public class Board implements BoardControls {
     }
 
     public Board(final Dimension theDimension) {
+        super();
         myBoardDimension = new Dimension(theDimension);
-        myPieceLocation = new Point(0,0);
+        myPieceLocation = new Point(0, 0);
         myPcs = new PropertyChangeSupport(this);
     }
 
+    @Override
+    public int getBoardWidth() {
+        return myBoardDimension.width;
+    }
 
     @Override
-    public Dimension getBoardDimensions() {
-        return new Dimension(myBoardDimension);
+    public int getBoardHeight() {
+        return myBoardDimension.height;
     }
 
     @Override
@@ -71,19 +78,23 @@ public class Board implements BoardControls {
         myPcs.firePropertyChange(PROPERTY_PIECE_LOCATION, null, new Point(myPieceLocation));
     }
 
+    @Override
     public void addPropertyChangeListener(final PropertyChangeListener theListener) {
         myPcs.addPropertyChangeListener(theListener);
     }
 
+    @Override
     public void addPropertyChangeListener(final String thePropertyName,
                                           final PropertyChangeListener theListener) {
         myPcs.addPropertyChangeListener(thePropertyName, theListener);
     }
 
+    @Override
     public void removePropertyChangeListener(final PropertyChangeListener theListener) {
         myPcs.removePropertyChangeListener(theListener);
     }
 
+    @Override
     public void removePropertyChangeListener(final String thePropertyName,
                                              final PropertyChangeListener theListener) {
         myPcs.removePropertyChangeListener(thePropertyName, theListener);

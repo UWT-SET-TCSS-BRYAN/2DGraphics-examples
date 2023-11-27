@@ -22,7 +22,7 @@ import javax.swing.JPanel;
  * @author Charles Bryan
  * @version 1.2
  */
-public class ArcPanel extends JPanel {
+public final class ArcPanel extends JPanel {
     
     /**  A generated serial version UID for object Serialization. */
     @Serial

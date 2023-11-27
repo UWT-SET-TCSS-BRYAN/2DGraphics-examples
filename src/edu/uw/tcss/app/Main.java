@@ -1,8 +1,7 @@
 package edu.uw.tcss.app;
 
-import javax.swing.SwingUtilities;
-
 import edu.uw.tcss.view.MyBoardPanel;
+import javax.swing.SwingUtilities;
 
 /**
  * Driver class for the GUI.
@@ -12,7 +11,7 @@ import edu.uw.tcss.view.MyBoardPanel;
 public final class Main {
 
     private Main() {
-
+        super();
     }
 
     /**
