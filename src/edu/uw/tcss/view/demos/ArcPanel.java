@@ -2,7 +2,7 @@
  * Java2D Arc Demo - TCSS 305
  */
 
-package view;
+package edu.uw.tcss.view.demos;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,7 +10,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
-
+import java.io.Serial;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -25,7 +25,8 @@ import javax.swing.JPanel;
 public class ArcPanel extends JPanel {
     
     /**  A generated serial version UID for object Serialization. */
-    private static final long serialVersionUID = 8452917670991316606L; 
+    @Serial
+    private static final long serialVersionUID = 8452917670991316606L;
 
     /**
      * The panel width.

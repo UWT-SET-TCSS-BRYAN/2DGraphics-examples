@@ -2,16 +2,22 @@
  * Java2D Ellipse and Rectangle Demo - TCSS 305
  */
 
-package view;
+package edu.uw.tcss.view.demos;
 
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
-
-import javax.swing.*;
+import java.io.Serial;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  * Demonstrates the painting of ellipses (and rectangles).
@@ -23,7 +29,8 @@ import javax.swing.*;
 public class EllipseAndRectanglePanel extends JPanel {
     
     /**  A generated serial version UID for object Serialization. */
-    private static final long serialVersionUID = 8452917670991316606L; 
+    @Serial
+    private static final long serialVersionUID = 8452917670991316606L;
     
     /** The width of the panel. */
     private static final int WIDTH = 400;
@@ -31,8 +38,8 @@ public class EllipseAndRectanglePanel extends JPanel {
     /** The height of the panel. */
     private static final int HEIGHT = 400;
 
-    /** The stroke width in pixels. */
-    private static final int STROKE_WIDTH = 10;
+    /** The distance to move the shape. */
+    private static final int MOVE_DISTANCE = 10;
 
     /** The width for the rectangle. */
     private static final int RECTANGLE_WIDTH = 50;
@@ -40,6 +47,7 @@ public class EllipseAndRectanglePanel extends JPanel {
     /** The height for the rectangle. */
     private static final int RECTANGLE_HEIGHT = 50;
 
+    /** A Shape to move around the panel. */
     private final RectangularShape myShape;
 
 
@@ -51,7 +59,7 @@ public class EllipseAndRectanglePanel extends JPanel {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
-        myShape = new Ellipse2D.Double(0, 150, 100, 100);
+        myShape = new Ellipse2D.Double(0, 0, RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
         addButton();
 
     }
@@ -62,8 +70,8 @@ public class EllipseAndRectanglePanel extends JPanel {
 
         move.addActionListener(theEvent -> {
             final Rectangle2D bounds = myShape.getBounds2D();
-            myShape.setFrame(bounds.getX() + 25,
-                    bounds.getY() + 5,
+            myShape.setFrame(bounds.getX() + MOVE_DISTANCE,
+                    bounds.getY() + MOVE_DISTANCE,
                     bounds.getWidth(),
                     bounds.getHeight());
 
@@ -89,27 +97,8 @@ public class EllipseAndRectanglePanel extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                              RenderingHints.VALUE_ANTIALIAS_ON);
 
-//        System.out.println("Paint me in paintComponent!: W:" + getWidth() + ", H:" + getHeight());
-
         g2d.setPaint(Color.GREEN);
         g2d.fill(myShape);
-
-
-//        final Shape ellipse = new Ellipse2D.Double(10, 10, 50, 100);
-//        g2d.setPaint(Color.GREEN);
-//        g2d.setStroke(new BasicStroke(1));
-//        g2d.fill(ellipse);
-//
-//        final Shape rectangle =
-//                        new Rectangle2D.Double((getWidth() - RECTANGLE_WIDTH) / 2,
-//                                               (getHeight() - RECTANGLE_HEIGHT) / 2,
-//                                               RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
-//        g2d.setPaint(Color.RED);
-//        g2d.setStroke(new BasicStroke(STROKE_WIDTH));
-//        g2d.setStroke(new BasicStroke(STROKE_WIDTH, BasicStroke.CAP_BUTT,
-//                                      BasicStroke.JOIN_MITER, 1.5f));
-//        g2d.draw(rectangle);
-
     }
 
     /**
@@ -123,7 +112,7 @@ public class EllipseAndRectanglePanel extends JPanel {
 
     public static void createAndShowGui() {
         final EllipseAndRectanglePanel panel = new EllipseAndRectanglePanel();
-        final JFrame frame = new JFrame("EllipseAndRectanglePanel Demo");
+        final JFrame frame = new JFrame("Moving Ellipse Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         frame.setLocationByPlatform(true);

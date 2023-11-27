@@ -2,7 +2,7 @@
  * Java2D General Path Demo - TCSS 305
  */
 
-package view;
+package edu.uw.tcss.view.demos;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
+import java.io.Serial;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -53,7 +54,8 @@ public class PathPanel extends JPanel {
     public static final int LINE_WIDTH = 8;
     
     /**  A generated serial version UID for object Serialization. */
-    private static final long serialVersionUID = 8452917670991316606L; 
+    @Serial
+    private static final long serialVersionUID = 8452917670991316606L;
 
     // Instance Fields
     
